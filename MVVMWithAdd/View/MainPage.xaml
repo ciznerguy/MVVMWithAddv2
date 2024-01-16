@@ -1,0 +1,111 @@
+﻿<Page x:Class="MVVMWithAdd.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="MainPage" Height="585" Width="1550" Background="White">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Resources/ButtonStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="379*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="505*"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="296*"/>
+            <ColumnDefinition Width="84*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu Template -->
+
+
+        <ListView Name="UserGrid" Grid.Row="1" Margin="15,25,3,4" ItemsSource="{Binding Users}" Grid.Column="3" Grid.ColumnSpan="4">
+            <ListView.View>
+                <GridView x:Name="grdTest">
+                    <GridViewColumn Header="קוד משתמש" DisplayMemberBinding="{Binding UserId}" Width="50"/>
+                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="80"/>
+                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="100"/>
+                    <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}" Width="80"/>
+                    <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}" Width="80"/>
+                    <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}" Width="100"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="150"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel  Orientation="Horizontal"  HorizontalAlignment="Center" Grid.Row="2" Margin="0,7,40,0">
+            <Button Content="Update"     
+                    Name="btnUpdate"
+                    FontSize="35"
+                    Width="135"         
+                    Background="BurlyWood"
+                    Command="{Binding Path=UpdateCommand}"
+                    Click="BtnUpdate_Click"
+                    Style="{StaticResource CustomButtonStyle}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3"  Grid.ColumnSpan="2" Margin="0,76,0,0" Grid.RowSpan="2">
+            <Button Content="Next"  
+                    Margin="0,0,30,0"
+                    Name="btnNext"
+                    FontSize="35"
+                    Width="145"
+                    Command="{Binding Path=NextCommand}"
+                    Click="BtnNext_Click"
+                    Style="{StaticResource CustomButtonStyle}"/>
+
+            <Button Content="Previous"     
+                    Name="btnPrev"
+                    FontSize="35"
+                    Width="145"
+                    Command="{Binding Path=PrevCommand}"
+                    Click="BtnPrev_Click"
+                    Style="{StaticResource CustomButtonStyle}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="95,31,48,0" VerticalAlignment="Top" Height="267" Grid.ColumnSpan="2">
+            <StackPanel>
+                <TextBlock Text="קוד משתמש:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Name="txtUserId" Width="178" Text="{Binding ElementName=UserGrid, Path=SelectedItem.UserId}" Style="{StaticResource RoundedTextBox}" Height="28"/>
+
+                <TextBlock Text="שם פרטי:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Name="txtFname" Width="178" Text="{Binding SelectedItem.FirstName, ElementName=UserGrid, Mode=TwoWay}" Style="{StaticResource RoundedTextBox}" Height="28"/>
+
+                <TextBlock Text="Last Name:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Name="txtLname" Width="178" Text="{Binding SelectedItem.LastName, ElementName=UserGrid, Mode=TwoWay}" Style="{StaticResource RoundedTextBox}" Height="28"/>
+
+                <TextBlock Text="City:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Name="txtCity" Width="178" Text="{Binding SelectedItem.City, ElementName=UserGrid, Mode=TwoWay}" Style="{StaticResource RoundedTextBox}" Height="28"/>
+
+                <TextBlock Text="Email:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Name="txtEmail" Width="178" Text="{Binding SelectedItem.Email, ElementName=UserGrid, Mode=TwoWay}" Style="{StaticResource RoundedTextBox}" Height="28"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Label Grid.Column="4"
+               Content="טופס משתמש"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               FontSize="28"
+               Width="294" Height="50"/>
+    </Grid>
+</Page>
