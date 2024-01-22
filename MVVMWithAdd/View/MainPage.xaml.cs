@@ -13,6 +13,7 @@ namespace MVVMWithAdd.View
         private UserViewModel _userViewModel;
 
 
+        // טעינת העמוד לתוך המסגרת
         public MainPage(SharedViewModel sharedViewModel)
         {
             InitializeComponent();
@@ -58,7 +59,7 @@ namespace MVVMWithAdd.View
         private void MoveFocus(bool isNext)
         {
             int currentIndex = UserGrid.SelectedIndex;//0
-           
+
 
             // חישוב של האינקדס הבא על ידי אופרטור בוליאני
             /*  זהה לכתיבה הבאה
