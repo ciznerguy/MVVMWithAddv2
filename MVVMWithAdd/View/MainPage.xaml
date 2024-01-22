@@ -8,9 +8,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="/Resources/ButtonStyle.xaml"/>
-
+               
             </ResourceDictionary.MergedDictionaries>
 
+            <!-- Other resources go here if any -->
 
 
         </ResourceDictionary>
@@ -36,7 +37,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Menu Template -->
-
+ 
 
         <ListView Name="UserGrid" Grid.Row="1" Margin="15,25,3,4" ItemsSource="{Binding Users}" Grid.Column="3" Grid.ColumnSpan="4">
             <ListView.View>

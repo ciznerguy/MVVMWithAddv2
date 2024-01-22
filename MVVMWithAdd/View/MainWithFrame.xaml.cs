@@ -27,7 +27,7 @@ namespace MVVMWithAdd.View
             DataContext = _userViewModel;
 
             // Navigate to MainPage (passing _sharedViewModel to MainPage constructor)
-            mainFrame.Navigate(new MainPage(_sharedViewModel));
+            mainFrame.Navigate(new LoginPage(_sharedViewModel));
         }
 
         private void ClickAdd(object sender, RoutedEventArgs e)

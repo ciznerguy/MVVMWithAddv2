@@ -1,0 +1,36 @@
+﻿<Page x:Class="MVVMWithAdd.View.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MVVMWithAdd.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="LoginPage">
+
+    <Grid>
+        <Border Height="450" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Background="LightGray" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- Adding a StackPanel for the login form -->
+            <StackPanel Margin="20">
+
+                <!-- Email/Username Label and TextBox -->
+                <StackPanel Margin="0 0 0 10">
+                    <Label Content="Email/Username" />
+                    <TextBox x:Name="UsrTxtBox" Text="Enter your email or username" GotFocus="UsrTxtBox_GotFocus" />
+                </StackPanel>
+
+                <!-- Password Label and TextBox -->
+                <StackPanel Margin="0 10 0 10">
+                    <Label Content="Password" />
+                    <PasswordBox x:Name ="PwdBox" />
+                </StackPanel>
+
+                <!-- Login Button -->
+                <Button Content="Login" Width="100" Height="30" HorizontalAlignment="Center" Margin="0 10 0 0" Click="Button_Click"/>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Page>
