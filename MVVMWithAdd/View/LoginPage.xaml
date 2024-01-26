@@ -8,16 +8,28 @@
       d:DesignHeight="450" d:DesignWidth="400"
       Title="LoginPage">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="/MVVMWithAdd;component/Resources/ButtonStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
     <Grid>
-        <Border Height="450" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Background="LightGray" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Height="450" BorderBrush="#FF6D3E75" BorderThickness="1" CornerRadius="10" Background="LightGray" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <!-- Adding a StackPanel for the login form -->
             <StackPanel Margin="20">
 
                 <!-- Email/Username Label and TextBox -->
                 <StackPanel Margin="0 0 0 10">
-                    <Label Content="Email/Username" />
-                    <TextBox x:Name="UsrTxtBox" Text="Enter your email or username" GotFocus="UsrTxtBox_GotFocus" />
+                    <Label Content="Email/Username" FontWeight="Bold" HorizontalContentAlignment="Center" FontFamily="Aharoni" FontSize="14" />
+                    <TextBox x:Name="UsrTxtBox" Text="Enter your email or username" GotFocus="UsrTxtBox_GotFocus" BorderBrush="#FF1245DE" />
+
                 </StackPanel>
 
                 <!-- Password Label and TextBox -->
@@ -25,9 +37,16 @@
                     <Label Content="Password" />
                     <PasswordBox x:Name ="PwdBox" />
                 </StackPanel>
+                <Button Content="Login" Width="100" Height="30" Click="Button_Click" Background="OrangeRed"/>
+                <TextBlock>
+                    <Run Text="Not a member? " />
+                    <Hyperlink NavigateUri="/View/RegisterNew.xaml" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Run Text="Click here to sign up" />
+                    </Hyperlink>        
+                </TextBlock>
 
-                <!-- Login Button -->
-                <Button Content="Login" Width="100" Height="30" HorizontalAlignment="Center" Margin="0 10 0 0" Click="Button_Click"/>
+
+
 
             </StackPanel>
 

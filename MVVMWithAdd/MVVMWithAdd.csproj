@@ -73,7 +73,14 @@
     <Compile Include="View\MainWithFrame.xaml.cs">
       <DependentUpon>MainWithFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RegisterNew.xaml.cs">
+      <DependentUpon>RegisterNew.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UnderlineButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWithFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegisterNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

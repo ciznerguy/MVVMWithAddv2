@@ -43,16 +43,7 @@ namespace MVVMWithAdd.View
                     Country = "",
                     Email = email,                   
                     Password ="",
-                    /*
-                  
-                        private int userId;
-                        private string firstName;
-                        private string lastName;
-                        private string city;
-                        private string state;
-                        private string country;
-                        private string eMail;
-                        private string password;*/
+           
                 };
 
                 _sharedViewModel.UsersList.Add(newUser);
@@ -96,7 +87,6 @@ namespace MVVMWithAdd.View
                 MessageBox.Show($"Error: {ex.Message}", "Error hh", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
 
 
 

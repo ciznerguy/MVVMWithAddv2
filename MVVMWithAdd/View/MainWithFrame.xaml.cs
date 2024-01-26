@@ -26,6 +26,12 @@ namespace MVVMWithAdd.View
             // Set DataContext to _userViewModel
             DataContext = _userViewModel;
 
+            // check if _sharedViewModel.UsersList is null
+            if (_sharedViewModel.UsersList == null)
+            {
+                // Create a new list of users
+            }
+
             // Navigate to MainPage (passing _sharedViewModel to MainPage constructor)
             mainFrame.Navigate(new LoginPage(_sharedViewModel));
         }
