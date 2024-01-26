@@ -1,4 +1,5 @@
-﻿using MVVMWithAdd.ViewModel;
+﻿using MVVMWithAdd.Model;
+using MVVMWithAdd.ViewModel;
 using System;
 using System.Linq;
 using System.Windows;
@@ -30,13 +31,22 @@ namespace MVVMWithAdd.View
         {
             try
             {
-                // Get the entered email and password
+                // Get the entered email and password 
                 string enteredEmail = UsrTxtBox.Text;
                 string enteredPassword = PwdBox.Password;
 
                 // Search for a match in the list
-                var matchedUser = _sharedViewModel.UsersList
-                    .FirstOrDefault(user => user.Email == enteredEmail && user.Password == enteredPassword);
+                User matchedUser = null;
+
+                foreach (User user in _sharedViewModel.UsersList)
+                {
+                    if (user.Email == enteredEmail && user.Password == enteredPassword)
+                    {
+                        matchedUser = user;
+                        break; // Found a match, exit the loop
+                    }
+                }
+
 
                 // Check if a match was found and load the main page
                 if (matchedUser != null) 
