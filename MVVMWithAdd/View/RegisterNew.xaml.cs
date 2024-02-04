@@ -41,6 +41,50 @@ namespace MVVMWithAdd.View
             InitializeComponent();
         }
 
+        //generate method to receive a string and return true if this is a correct email structure
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        // generate a method to check if the email is already in the list
+        public static bool IsEmailInList(string email)
+        {
+            foreach (User user in _sharedViewModel.UsersList)
+            {
+                if (user.Email == email)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // legal password is 6 digits long or more and contains at least one digit and one letter
+        public static bool IsValidPassword(string password)
+        {
+            if (password.Length < 6)
+            {
+                return false;
+            }
+            if (!password.Any(char.IsDigit))
+            {
+                return false;
+            }
+            if (!password.Any(char.IsLetter))
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             string firstPassword = txtPassword1.Text;
@@ -60,7 +104,24 @@ namespace MVVMWithAdd.View
                     Email = txtEmail.Text,
                     Password = txtPassword1.Text,
                 };
-             
+              
+                if (!IsValidEmail(newUser.Email))
+                {
+                    MessageBox.Show("Invalid email");
+                    return;
+                }
+    
+                if (IsEmailInList(newUser.Email))
+                {
+                    MessageBox.Show("Email already exists");
+                    return;
+                }
+                if (!IsValidPassword(newUser.Password))
+                {
+                    MessageBox.Show("Invalid password");
+                    return;
+                }
+               
                 if (_sharedViewModel.UsersList != null)
                 {
                     _sharedViewModel.UsersList.Add(newUser);

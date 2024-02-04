@@ -20,6 +20,8 @@ namespace MVVMWithAdd.View
         {
             InitializeComponent();
             _sharedViewModel = sharedViewModel;
+
+           
         }
 
        
@@ -124,6 +126,8 @@ namespace MVVMWithAdd.View
                 // Handle any exceptions that may occur
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+
+
         }
     }
 }

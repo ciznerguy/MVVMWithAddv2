@@ -1,7 +1,9 @@
 ﻿// MainWithFrame.xaml.cs
 
 using MVVMWithAdd.ViewModel;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MVVMWithAdd.View
 {
@@ -36,16 +38,7 @@ namespace MVVMWithAdd.View
             mainFrame.Navigate(new LoginPage(_sharedViewModel));
         }
 
-        private void ClickAdd(object sender, RoutedEventArgs e)
-        {
-            
-
-            if (mainFrame != null)
-            {
-                mainFrame.Visibility = Visibility.Visible;
-                mainFrame.Navigate(new AddUser(_sharedViewModel));
-            }
-        }
+      
 
         private void ClickClose(object sender, RoutedEventArgs e)
         {
@@ -53,5 +46,17 @@ namespace MVVMWithAdd.View
             System.Windows.Application.Current.Shutdown();
             this.Close();
         }
+
+        // In MainWithFrame.xaml.cs
+        private void ClickLogout(object sender, RoutedEventArgs e)
+        {
+           
+         
+            mainFrame.Navigate(new LoginPage(_sharedViewModel));
+        }
+
+
+
+
     }
 }
