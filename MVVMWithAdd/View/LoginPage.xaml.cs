@@ -112,6 +112,8 @@ namespace MVVMWithAdd.View
                         {  // show the main page
                     MainPage MainPage = new MainPage(_sharedViewModel);
                     NavigationService.Navigate(MainPage);
+                    Application.Current.Windows[0].Height = 700;
+                    Application.Current.Windows[0].Width = 1600;
                 }
                
                 else

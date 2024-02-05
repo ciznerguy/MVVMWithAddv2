@@ -19,6 +19,8 @@ namespace MVVMWithAdd.View
         {
             InitializeComponent();
 
+            
+
             // Create an instance of SharedViewModel
             _sharedViewModel = new SharedViewModel();
 
@@ -35,10 +37,14 @@ namespace MVVMWithAdd.View
             }
 
             // Navigate to MainPage (passing _sharedViewModel to MainPage constructor)
+           
             mainFrame.Navigate(new LoginPage(_sharedViewModel));
+            Application.Current.Windows[0].Height = 530;
+            Application.Current.Windows[0].Width = 500;
         }
 
-      
+       
+
 
         private void ClickClose(object sender, RoutedEventArgs e)
         {
@@ -53,6 +59,8 @@ namespace MVVMWithAdd.View
            
          
             mainFrame.Navigate(new LoginPage(_sharedViewModel));
+            Application.Current.Windows[0].Height = 530;
+            Application.Current.Windows[0].Width = 500;
         }
 
 
