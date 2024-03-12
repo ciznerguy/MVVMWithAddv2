@@ -22,8 +22,6 @@ namespace MVVMWithAdd.View
         {
             InitializeComponent();
             _sharedViewModel = sharedViewModel;
-
-           
         }
 
 
@@ -35,21 +33,21 @@ namespace MVVMWithAdd.View
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            
+
             try
             {
                 string uri = e.Uri.ToString();
-                
+
                 // Load AddUser page into the mainFrame
                 if (uri == "/View/RegisterNew.xaml")
                 {
-                    
+
 
 
                     // Navigate to the AddUser page directly
                     if (NavigationService != null && uri == "/View/RegisterNew.xaml")
                     {
-                      
+
                         RegisterNew register = new RegisterNew(_sharedViewModel);
                         NavigationService.Navigate(register);
                         MessageBox.Show("Navigated to RegisterNew");
@@ -120,5 +118,39 @@ namespace MVVMWithAdd.View
             }
         }
 
+
+        private void ShowRow_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionString = @"Data Source=C:\Users\User\source\repos\פרויקט 5 יחידות\MVVMWithAdd\myfirstsql.db;Version=3;";
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open(); // פתיחת החיבור לבסיס הנתונים
+
+                string sql = "SELECT * FROM Users LIMIT 1"; // שאילתה לקבלת השורה הראשונה מהטבלה
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read()) // אם קיימת שורה לקריאה
+                        {
+                            // שמירת ערכי העמודות במשתנים
+                            int userId = Convert.ToInt32(reader["userId"]);
+                            string firstName = Convert.ToString(reader["firstName"]);
+                            string lastName = Convert.ToString(reader["lastName"]);
+                            string city = Convert.ToString(reader["city"]);
+                            string state = Convert.ToString(reader["state"]);
+                            string country = Convert.ToString(reader["country"]);
+                            string email = Convert.ToString(reader["eMail"]);
+                            string password = Convert.ToString(reader["password"]);
+
+                            // הצגת הנתונים לדוגמא
+                            MessageBox.Show($"UserID: {userId}, Name: {firstName} {lastName}, Email: {email}");
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+

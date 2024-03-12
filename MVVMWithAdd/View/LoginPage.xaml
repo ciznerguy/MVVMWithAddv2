@@ -45,7 +45,13 @@
                     </Hyperlink>        
                 </TextBlock>
 
-
+                <Button x:Name="ShowRow"
+                        Width="180"
+                        Background="Blue"
+                        Content="Show Row"
+                        
+                        Command="{Binding ShowRowCommand}" Click="ShowRow_Click"/>
+                
 
 
             </StackPanel>
